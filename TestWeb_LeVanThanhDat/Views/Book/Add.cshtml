@@ -1,0 +1,38 @@
+﻿@model TestWeb_LeVanThanhDat.Models.Book
+
+<h2>Thêm sách</h2>
+
+<form asp-action="Add" method="post" style="">
+    @*div class="mb-3">
+        <label asp-for="Id" class="form-label">Mã sách</label>
+        <input asp-for="Id" class="form-control" />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>*@
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Tên Sách</label>
+        <input asp-for="Title" class="form-control" type="text" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Author" class="form-label">Tác giả</label>
+        <input asp-for="Author" class="form-control" type="text" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label">Giá bìa</label>
+        <input asp-for="Price" class="form-control" type="number" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Quantity" class="form-label">Số lượng</label>
+        <input asp-for="Quantity" class="form-control" type="number" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a class="btn btn-secondary" href="@Url.Action("Index", "Book")">Quay về</a>
+</form>

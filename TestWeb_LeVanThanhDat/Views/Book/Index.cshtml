@@ -1,0 +1,51 @@
+﻿@model List<TestWeb_LeVanThanhDat.Models.Book>
+
+<h2 class="mb-3">Danh sách sách</h2>
+
+<!-- Hiển thị thông báo thành công nếu có -->
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success">@TempData["success"]</div>
+}
+
+<!-- Nút thêm sách -->
+<div class="mb-3">
+    <a class="btn btn-primary" href="@Url.Action("Add", "Book")">+ Thêm Sách</a>
+</div>
+
+<!-- Bảng sách -->
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Mã sách</th>
+            <th>Tên sách</th>
+            <th>Giá bìa</th>
+            <th>Số lượng</th>
+            <th style="width: 180px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Id</td>
+                    <td>@book.Title</td>
+                    <td>@book.Price</td>
+                    <td>@book.Quantity</td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" href="@Url.Action("Update", "Book", new { id = book.Id })">Sửa</a>
+                        <a class="btn btn-sm btn-danger" href="@Url.Action("Delete", "Book", new { id = book.Id })">Xoá</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">Không có sách nào.</td>
+            </tr>
+        }
+    </tbody>
+</table>
